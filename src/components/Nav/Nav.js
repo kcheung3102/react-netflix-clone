@@ -3,14 +3,10 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useAuth0 } from "@auth0/auth0-react";
-// import MenuDropDown from '../Menu/MenuDropDown';
+import MenuDropDown from '../Menu/MenuDropDown';
 import "./Nav.css";
 import { useScrollTrigger } from "@material-ui/core";
 
@@ -56,25 +52,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Nav(props) {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [auth, setAuth] = useState(true);
-
-  const open = Boolean(anchorEl);
-  const { loginWithRedirect } = useAuth0();
+function Nav() {
   const trigger = useScrollTrigger();
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -82,6 +61,7 @@ function Nav(props) {
         style={{
           backgroundColor: trigger ? "#000" : "transparent",
           elevation: trigger ? 3 : 0,
+          color: trigger ? "white" : "whitesmoke"
         }}
       >
         <Toolbar>
@@ -106,40 +86,10 @@ function Nav(props) {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <div>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <img
-                className="profile__logo"
-                src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-                alt="Profile Logo"
-              ></img>
-            </IconButton>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              transformOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-            >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={loginWithRedirect}>Login</MenuItem>
-            </Menu>
-          </div>
+          <Box/>
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <MenuDropDown />
+            </Box>
         </Toolbar>
       </AppBar>
     </Box>

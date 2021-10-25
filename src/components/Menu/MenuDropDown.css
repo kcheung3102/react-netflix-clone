@@ -1,0 +1,6 @@
+.profile__logo {
+    position: fixed;
+    right: 20px;
+    width: 30px;
+    object-fit: contain;
+}

@@ -6,17 +6,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../LoginButton/LoginButton";
 import LogOutButton from "../LogoutButton/LogoutButton";
 import Profile from "../Profile/Profile.js";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import Button from "@mui/material/Button";
-import Slide from "@mui/material/Slide";
+import { Link } from 'react-router-dom';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 function MenuDropDown() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -63,7 +54,8 @@ function MenuDropDown() {
         }}
       >
         {isAuthenticated ? <Profile /> : null}
-        <MenuItem>Settings</MenuItem>
+        <MenuItem component={Link} to="/Settings">Settings</MenuItem>
+        <MenuItem component={Link} to="/About">About</MenuItem>
         {isAuthenticated ? <LogOutButton /> : <LoginButton />}
         {isAuthenticated ? null : <MenuItem
             onClick={() =>

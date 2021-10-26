@@ -9,6 +9,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuDropDown from '../Menu/MenuDropDown';
 import "./Nav.css";
 import { useScrollTrigger } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -71,11 +72,13 @@ function Nav() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
+            <Link to="/">
             <img
               className="nav__logo"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1024px-Netflix_2015_logo.svg.png"
               alt="Netflix Logo"
-            ></img>
+             
+            ></img></Link>
           </Typography>
           <Search>
             <SearchIconWrapper>

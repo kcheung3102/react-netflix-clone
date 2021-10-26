@@ -1,9 +1,11 @@
+import { Skeleton } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "../../axios.js";
 import requests from "../../requests.js";
 import "./Banner.css";
 
-function Banner() {
+function Banner(props) {
+  const { loading = false } = props;
   const [movie, setMovie] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -22,13 +24,15 @@ function Banner() {
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
-  return (
+  return loading ? (
+    <Skeleton variant="rectangular" height={448} sx={{bgcolor:'grey.900'}} />
+  ) : (
     <header
       className="banner"
       style={{
         backgroundSize: "cover",
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-        backgroundPOsition: "center center",
+        backgroundPosition: "center center",
       }}
     >
       <div className="banner__contents">

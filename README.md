@@ -12,7 +12,7 @@ Auth0 User login demo
 
 [ReactJs](https://reactjs.org/) - A Javascript UI Library 
 
-[MaterialUI](https:// - React Component Library
+[MaterialUI](https://https://mui.com/) - React Component Library
 
 [Auth0](https://auth0.com/) - User Authentication and Authorization Platform Service
 
